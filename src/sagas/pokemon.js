@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from "redux-saga/effects";
 import axios from "axios";
 import uuid from "uuid";
-function* addPokemon(action) {
+export function* addPokemon(action) {
   const { query } = action;
   try {
     const response = yield call(
@@ -13,7 +13,7 @@ function* addPokemon(action) {
     const pokemon = {
       name,
       img: sprites.front_default,
-      id: uuid()
+      id: uuid(),
     };
 
     yield put({ type: "ADD_POKEMON_ASYNC", pokemon });
